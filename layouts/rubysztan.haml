@@ -1,0 +1,32 @@
+!!! Strict
+%head
+
+  - content_for :head do
+    %link{:href=> '/stylesheets/tomayko.css', :rel=> 'stylesheet', :type => 'text/css', :media => 'screen'}
+  
+  = render 'partials/head'  
+
+%body{:id=>@item[:body_id]}
+  
+  = render 'partials/title_and_nav'
+  
+  #container
+    #rubysztan-nav
+      %p
+        Változatos 
+        %a{:href=>"/irasok"} írások
+        és
+        %a{:href=>"/olvasasok"} olvasnivalók
+        egy webfejlesztő mindennapjaiból.
+    
+      %p#rss
+        %img{:src=>"/images/rss.gif", :style=>"vertical-align:middle"}
+          %a{:href=>@site.config[:rss_url], :rel=>"alternate", :type=>"application/rss+xml"} Kövess!(RSS)
+    = yield
+
+    = render 'partials/legal_notes'
+    
+  = render 'partials/analytics'
+
+
+

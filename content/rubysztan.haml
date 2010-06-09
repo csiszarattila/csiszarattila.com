@@ -1,0 +1,28 @@
+---
+layout: rubysztan
+title: Rubysztán
+body_id: rubysztan
+---  
+.index
+  - documents.each do |post|
+    .published
+      %span.day= post[:created_at].to_format("%d")
+      = post[:created_at].to_format("%Y %B")
+    .entry
+      .summary
+      -if post[:type] == "post" or post[:type] == "tutorial"
+        %h3
+          %a{:href=>post.path}= post[:title]
+          %strong &mdash;
+        -if post[:type] == "tutorial"
+          = post.excerptize(post.compiled_content, {:length=>250})
+          %a{:href=>post.path} Tovább
+        -else
+          = post.compiled_content()
+          
+      -elsif post[:type] == "link"
+        %img{:src=>"/images/world.png"}
+        %h3
+          %a{:href=>post[:url]}= post[:title]
+          %strong &mdash;
+        = post.compiled_content()

@@ -1,0 +1,17 @@
+---
+layout: rubysztan
+title: Rubysztán
+body_id: rubysztan
+---
+.index
+  - links.each do |link|
+    .published
+      %span.day= link[:created_at].to_format("%d")
+      = link[:created_at].to_format("%Y %B")
+    .entry
+      .summary
+      %h3
+        %a{:href=>link[:url]}= link[:title]
+        %strong &mdash;
+      = link.compiled_content()
+      

@@ -1,0 +1,36 @@
+!!! Strict
+%head
+  %title csiszarattila.com
+  %meta{'http-equiv'=>'Content-Type', :content=>'text/html;charset=utf8'}
+  %meta{:name=>'author', :content =>"Csiszár Attila"}
+  %meta{:name=>'keywords', :content=>"Ruby, Ruby on Rails, Csiszár, Csiszár Attila"}
+  %meta{:name=>'keywords', :lang=>'hu', :content=>"webprogramozás, webfejlesztés, Ruby, Csiszár, Csiszár Attila"}
+  
+  %meta{:name=>'description', :content=>'Csiszár Attila (webprogramozó) személyes oldala. Webprogramozási leírások, tapasztalatok főként Ruby nyelven.'}
+  
+  %link{:href=> '/stylesheets/style.css', :rel=> 'stylesheet', :type => 'text/css', :media => 'screen'}
+
+  %link{:href=> '/stylesheets/tomayko.css', :rel=> 'stylesheet', :type => 'text/css', :media => 'screen'}
+  
+%body#tutorial
+  %h1#title 
+    %a{:href=>"/"} csiszarattila.com 
+    \/ 
+    %a{:href=>"/rubysztan/"} Rubysztán
+  
+  #container
+    %h1= item[:title]
+    = yield
+  
+    #legal-notes
+      %a{:href=>"http://creativecommons.org/licenses/by-nc-sa/2.5/"} &copy;2008-2010 Csiszár Attila 
+
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-1524576-2");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>

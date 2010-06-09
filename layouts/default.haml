@@ -1,0 +1,14 @@
+!!! Strict
+%head
+  = render 'partials/head'
+  
+%body{:id=>@item[:body_id]}
+  
+  = render 'partials/title_and_nav'
+  
+  #container
+    = yield
+  
+    = render 'partials/legal_notes'
+    
+  = render 'partials/analytics'

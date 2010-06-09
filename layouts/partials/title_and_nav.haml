@@ -1,0 +1,14 @@
+%h1#title 
+  %a{:href=>"/"} csiszarattila.com
+  -if @item[:title]
+    \/
+    = @item[:title]
+
+#nav
+  %a{:href=>"/rubysztan/"} Rubysztán(blog) 
+  \/
+  %a{:href=>"/cv/"} CV
+  \/
+  %a{:href=>"/kapcsolat/"} Kapcsolat
+  \/
+  %a{:href=>"http://github.com/csiszarattila"} Github

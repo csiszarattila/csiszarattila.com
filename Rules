@@ -1,0 +1,108 @@
+#!/usr/bin/env ruby
+
+# A few helpful tips about the Rules file:
+#
+# * The order of rules is important: for each item, only the first matching
+#   rule is applied.
+#
+# * Item identifiers start and end with a slash (e.g. “/about/” for the file
+#   “content/about.html”). To select all children, grandchildren, … of an
+#   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
+#   because “*” matches zero or more characters.
+
+require 'compass'
+Compass.add_project_configuration 'config/compass.config'
+
+require 'builder'
+require 'albino'
+
+compile '/stylesheets/*/' do
+   if item[:extension] == "sass"
+     filter :sass , Compass.sass_engine_options
+   end
+end
+
+route '/stylesheets/*/' do
+   item.identifier.chop + '.css'
+end
+
+compile '/images/*/' do
+end
+
+route '/images/*/' do
+  item.identifier.chop + '.' + item[:extension]
+end
+
+compile 'rubysztan' do
+   filter :haml
+   layout 'rubysztan'
+end
+
+compile 'irasok' do
+   filter :haml
+   layout 'rubysztan'
+end 
+
+compile 'olvasasok' do
+   filter :haml
+   layout 'rubysztan'
+end
+
+compile 'tutorialok' do
+  filter :haml
+  layout 'rubysztan'
+end
+
+compile '/tutorialok/*/'do
+  case item[:extension]
+   when 'md'
+     filter :maruku
+   when 'haml'
+     filter :haml
+  end
+ 
+  layout "document"
+end
+
+route '/tutorialok/*/' do
+  item.identifier.chop + ".html"
+end
+
+compile '/posztok/*/' do
+  case item[:extension]
+     when 'md'
+       filter :maruku
+     when 'haml'
+       filter :haml
+  end
+  layout "document"
+end
+
+route '/posztok/*/' do
+  item.identifier.chop + '.html'
+end
+
+compile '/rss' do
+  filter :haml
+end
+
+route '/rss' do
+  '/rubysztan/rss.xml'
+end
+
+compile '*' do
+   case item[:extension]
+     when 'md'
+       filter :maruku
+     when 'haml'
+       filter :haml
+   end
+
+   layout 'default'
+end
+
+route '*' do
+  item.identifier + 'index.html'
+end
+
+layout '*', :haml, :format => :html5

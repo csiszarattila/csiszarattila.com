@@ -1,0 +1,14 @@
+---
+layout: rubysztan
+title: Rubysztán
+body_id: rubysztan
+---
+.index
+  - tutorials.each do |post|
+    .published
+      %span.day= post[:created_at].to_format("%d")
+      = post[:created_at].to_format("%Y %B")
+    .entry
+      .summary
+      %h3
+        %a{:href=>post.path}= post[:title]

@@ -1,0 +1,9 @@
+--- 
+text_extensions: [ 'css', 'erb', 'haml', 'htm', 'html', 'js', 'less', 'markdown', 'md', 'php', 'rb', 'sass', 'txt', 'xhtml', 'xml' ]  
+output_dir: output
+data_sources: 
+- items_root: /
+  layouts_root: /
+  type: filesystem_unified
+rss_url: "http://feeds.feedburner.com/rubysztan"
+base_url: "http://csiszarattila.com"
